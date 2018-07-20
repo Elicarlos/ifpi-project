@@ -1,16 +1,18 @@
-"""
-WSGI config for moss project.
-
-It exposes the WSGI callable as a module-level variable named ``application``.
-
-For more information on this file, see
-https://docs.djangoproject.com/en/2.0/howto/deployment/wsgi/
-"""
-
+# +++++++++++ DJANGO +++++++++++
+# To use your own django app use code like this:
 import os
-
+import sys
+#
+## assuming your django settings file is at '/home/ElicarlosFerreira/mysite/mysite/settings.py'
+## and your manage.py is is at '/home/ElicarlosFerreira/mysite/manage.py'
+path = '/home/ElicarlosFerreira/ifpi-project/moss'
+if path not in sys.path:
+    sys.path.append(path)
+#
+os.environ['DJANGO_SETTINGS_MODULE'] = 'moss.settings'
+#
+## then:
 from django.core.wsgi import get_wsgi_application
-
-os.environ.setdefault("DJANGO_SETTINGS_MODULE", "moss.settings")
-
 application = get_wsgi_application()
+from django.contrib.staticfiles.handlers import StaticFilesHandler
+application = StaticFilesHandler(get_wsgi_application())
