@@ -24,20 +24,22 @@ SECRET_KEY = 'np*78@n+ql*k&r%x=vba=vf&9zezf6d6@6o#x^&hzjq*p2%-!#'
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
-
-ALLOWED_HOSTS = ['elicarlosferreira.pythonanywhere.com']
+ALLOWED_HOSTS = []
+# ALLOWED_HOSTS = ['elicarlosferreira.pythonanywhere.com']
 
 
 # Application definition
 
 INSTALLED_APPS = [
+    'core.apps.CoreConfig',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'core',
+    
+    
 ]
 
 MIDDLEWARE = [
@@ -119,4 +121,8 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/2.0/howto/static-files/
 
 STATIC_URL = '/static/'
-STATIC_ROOT = '/home/ElicarlosFerreira/ifpi-project/moss/static/'
+# Feito teste e funcionou sem isto abaixo
+STATICFILES_DIRS = [
+    os.path.join(BASE_DIR, 'static'),
+] 
+# STATIC_ROOT = '/home/ElicarlosFerreira/ifpi-project/moss/static/'
